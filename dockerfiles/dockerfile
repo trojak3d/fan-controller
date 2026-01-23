@@ -1,0 +1,16 @@
+
+FROM python:3.10-slim
+
+# Install system packages for temperature monitoring
+RUN apt-get update && apt-get install -y     smartmontools     lm-sensors     ipmitool     && rm -rf /var/lib/apt/lists/*
+
+# Install Python dependencies
+RUN pip install pyserial
+
+# Create app directory and copy script
+WORKDIR /app
+COPY fan_control.py /app/fan_control.py
+COPY healthcheck.py /app/healthcheck.py
+
+# Run the script
+CMD ["python", "fan_control.py"]
