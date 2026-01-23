@@ -1,0 +1,71 @@
+
+# -----------------------------------
+# Python
+# -----------------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.cache
+*.log
+
+# Virtual environments
+venv/
+env/
+.venv/
+.env/
+
+# -----------------------------------
+# Environment / Secrets (IMPORTANT)
+# -----------------------------------
+# Never commit real API keys or secrets
+stack.env
+*.env
+.env.*
+secrets/
+secret/
+*.key
+
+# -----------------------------------
+# Docker
+# -----------------------------------
+# Docker build artifacts
+*.tar
+*.img
+*.pid
+
+# Ignore local docker-compose override files
+docker-compose.override.yml
+
+# -----------------------------------
+# Arduino / ESP8266
+# -----------------------------------
+# Arduino build output
+*.elf
+*.bin
+*.hex
+
+# PlatformIO
+.pio/
+.piolibdeps/
+.pioenvs/
+.piodevices
+.pio.lock
+
+# -----------------------------------
+# OS / Editor Files
+# -----------------------------------
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# JetBrains IDEs
+.idea/
+
+# -----------------------------------
+# Generated Documentation / Temp
+# -----------------------------------
+*.md.tmp
+*.bak
