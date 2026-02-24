@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   fan-controller:
-    image: fan-controller
+    image: trojak3d/fan-controller:latest
     container_name: fan-controller
     restart: unless-stopped
     working_dir: /app
