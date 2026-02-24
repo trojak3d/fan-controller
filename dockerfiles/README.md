@@ -1,7 +1,7 @@
 # Fan Controller — Docker Image
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-trojak3d/fan--controller-blue?logo=github)](https://github.com/trojak3d/fan-controller)  
-[![Docker Hub](https://img.shields.io/badge/DockerHub-trojak3d%2Ffan--controller-blue?logo=docker)](https://hub.docker.com/repository/docker/trojak3d/fan-controller)
+[![GHCR](https://img.shields.io/badge/GHCR-ghcr.io%2Ftrojak3d%2Ffan--controller-blue?logo=github)](https://ghcr.io/trojak3d/fan-controller)
 
 
 [⬅ Back to main README](../README.md)  
@@ -117,14 +117,14 @@ If you accidentally expose a key, revoke it immediately in TrueNAS and generate 
 
 ---
 
-## Sample docker-compose (production-style, using Docker Hub image)
+## Sample docker-compose (production-style, using GHCR image)
 
 ```yaml
 version: '3.8'
 
 services:
   fan-controller:
-    image: trojak3d/fan-controller:latest
+    image: ghcr.io/trojak3d/fan-controller:latest
     container_name: fan-controller
     restart: unless-stopped
     privileged: true

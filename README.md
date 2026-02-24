@@ -1,7 +1,7 @@
 # 🌡️ ESP8266 USB Fan Controller for TrueNAS
 
 [![GitHub Repo](https://img.shields.io/badge/GitHub-trojak3d/fan--controller-blue?logo=github)](https://github.com/trojak3d/fan-controller)  
-[![Docker Hub](https://img.shields.io/badge/DockerHub-trojak3d%2Ffan--controller-blue?logo=docker)](https://hub.docker.com/repository/docker/trojak3d/fan-controller)
+[![GHCR](https://img.shields.io/badge/GHCR-ghcr.io%2Ftrojak3d%2Ffan--controller-blue?logo=github)](https://ghcr.io/trojak3d/fan-controller)
 
 A modular hardware + software system that adds **PWM fan control** to TrueNAS servers that *don’t have motherboard fan headers*. The system uses an **ESP8266 connected via USB**, controlled by a **Dockerized Python service** that reads temperatures from TrueNAS and the host system, computes a smoothed fan curve, and sends PWM commands to the fan.
 
@@ -146,7 +146,7 @@ This ensures the ESP is always available at a predictable serial path.
 version: '3.8'
 services:
   fan-controller:
-    image: trojak3d/fan-controller:latest
+    image: ghcr.io/trojak3d/fan-controller:latest
     container_name: fan-controller
     restart: unless-stopped
     working_dir: /app
