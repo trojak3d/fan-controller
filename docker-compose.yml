@@ -19,7 +19,7 @@ services:
       - BAUD_RATE=${BAUD_RATE}
       - LOG_DETAIL=${LOG_DETAIL}
       - SERIAL_PORT=${SERIAL_PORT}
-      - TRUENAS_HOST=http://localhost
+      - TRUENAS_HOST=${TRUENAS_HOST}
       - TRUENAS_API_KEY=${TRUENAS_API_KEY}
     labels:
       com.example.stack: "fan-controller"
