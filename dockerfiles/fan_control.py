@@ -62,18 +62,29 @@ def get_drive_temperatures() -> list[int]:
     Disks are never woken from standby.
     """
     try:
-        url = f"{TRUENAS_HOST}/api/v2.0/disk/temperatures"
-        headers = {"Authorization": f"Bearer {API_KEY}"}
-        resp = requests.get(url, headers=headers, verify=False)
+        url = f"{TRUENAS_HOST.rstrip('/')}/api/v2.0/disk/temperatures"
+        headers = {
+            "Authorization": f"Bearer {API_KEY}",
+            "Content-Type": "application/json",
+        }
+
+        resp = requests.post(url, headers=headers, json={}, verify=False, timeout=10)
+
         resp.raise_for_status()
-        disk_temps = resp.json()  # e.g., {"sda": 27, "sdb": 23, ...}
-        temps = list(disk_temps.values())
-        if os.environ.get("LOG_DETAIL", "false").lower() == "true":
-            for dev, temp in disk_temps.items():
-                print(f"{dev}: {temp}°C (cached)")
-        return temps
+        disk_temps = resp.json()
+
+        if isinstance(disk_temps, dict):
+            temps = [temp for temp in disk_temps.values() if isinstance(temp, (int, float))]
+            if LOG_DETAIL:
+                for dev, temp in disk_temps.items():
+                    if isinstance(temp, (int, float)):
+                        logging.info(f'{dev}: {int(temp)}°C (cached)')
+            return [int(temp) for temp in temps]
+
+        logging.warning(f'Unexpected disk temperature response format: {type(disk_temps).__name__}')
+        return []
     except Exception as e:
-        print(f"Failed to get cached disk temperatures: {e}")
+        logging.warning(f'Failed to get cached disk temperatures: {e}')
         return []
 
 # =========================
