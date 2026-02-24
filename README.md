@@ -185,7 +185,8 @@ MAX_FAN=80
 BAUD_RATE=115200
 LOG_DETAIL=true
 SERIAL_PORT=/dev/ttyESP
-TRUENAS_API_KEY=your_api_key
+TRUENAS_HOST=http://localhost:80
+TRUENAS_API_KEY=ApiKey
 ```
 ---
 
